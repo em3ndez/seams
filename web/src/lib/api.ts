@@ -20,7 +20,7 @@ export const api = {
   deleteFile: (p: string) => request('/api/files/' + encodeFilePath(p), { method: 'DELETE' }),
   renameFile: (p: string, newPath: string) => request('/api/files/' + encodeFilePath(p), { method: 'PATCH', body: JSON.stringify({ newPath }) }),
   search: (q: string) => request<{ results: SearchResult[] }>(`/api/search?q=${encodeURIComponent(q)}`),
-  getSettings: () => request<{ settings: SeamsConfig; rootDir: string }>('/api/settings'),
+  getSettings: () => request<{ settings: SeamsConfig; rootDir: string; rootDirName: string }>('/api/settings'),
   saveSettings: (settings: SeamsConfig) => request('/api/settings', { method: 'PUT', body: JSON.stringify({ settings }) }),
   async uploadFile(file: File): Promise<string> {
     const body = new FormData();

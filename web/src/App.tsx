@@ -19,7 +19,9 @@ export default function App() {
   const fetchSettings = useSettingsStore((s) => s.fetchSettings);
   const theme = useSettingsStore((s) => s.settings?.theme ?? 'neutral-dark');
   const rootDir = useSettingsStore((s) => s.rootDir);
+  const rootDirName = useSettingsStore((s) => s.rootDirName);
   const setShowSearch = useUiStore((s) => s.setShowSearch);
+  const setScope = useUiStore((s) => s.setScope);
   const toggleSidebar = useUiStore((s) => s.toggleSidebar);
   const sidebarCollapsed = useUiStore((s) => s.sidebarCollapsed);
   const [route, setRoute] = useState(() => getCurrentRoute());
@@ -36,8 +38,12 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
-    document.title = rootDir ? `seams — ${rootDir}` : 'seams';
-  }, [rootDir]);
+    document.title = rootDirName ? `seams — ${rootDirName}` : 'seams';
+  }, [rootDirName]);
+
+  useEffect(() => {
+    setScope(rootDir);
+  }, [rootDir, setScope]);
 
   useEffect(() => {
     const syncRoute = () => setRoute(getCurrentRoute());

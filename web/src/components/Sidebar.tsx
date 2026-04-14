@@ -17,7 +17,7 @@ export default function Sidebar({ settingsOpen, collapsed, onToggle }: Props) {
   const { files, activeFile, loadingFile, closeFile, deleteFile, renameFile } = useFileStore();
   const setShowSearch = useUiStore((s) => s.setShowSearch);
   const rootDir = useSettingsStore((s) => s.rootDir);
-  const rootDirName = rootDir ? rootDir.split('/').filter(Boolean).pop() ?? rootDir : 'seams';
+  const rootDirName = useSettingsStore((s) => s.rootDirName) ?? (rootDir ? rootDir.split('/').filter(Boolean).pop() ?? rootDir : 'seams');
   const activeTreePath = settingsOpen ? undefined : (loadingFile ?? activeFile);
   const settingsIconColor = settingsOpen ? 'var(--txt-2)' : 'var(--txt-4)';
   const [rootMenuPoint, setRootMenuPoint] = useState<{ x: number; y: number } | null>(null);
