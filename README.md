@@ -1,6 +1,6 @@
 # seams (beta)
 
-`seams` is a beautiful rich Markdown editor that's triggered via CLI and runs on-demand for the directory you choose.
+`seams` is a rich Markdown editor that's triggered via CLI and runs on-demand for the directory you choose.
 
 For example, if you run:
 
